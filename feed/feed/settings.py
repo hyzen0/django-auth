@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'feedapp',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'feedapp.User'
+
+SOCIAL_AUTH_TRAILING_SLASH = False
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-dd7zrryl.eu.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '8p5Jf4fYrIIVeyFe5cpXxnXuoUXpbyQz'
+SOCIAL_AUTH_AUTH0_SECRET = 'G5KQrx42Hylz0g7FSfSz3s_5YQuaDm1ghAJYuovbCHVwnSZqNU5Gg2R7caN38jtN'
+SOCIAL_AUTH_AUTH0_SCOPE = ['openid', 'profile', 'email']
+
+AUTHENTICATION_BACKENDS = {
+    'social_core.backends.auth0.Auth0Auth2',
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
